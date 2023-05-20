@@ -8,6 +8,17 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    var defaults = UserDefaults.standard
+    @State private var topPrediction = ""
+    @State private var secondPrediction = ""
+    @State private var topConfidence = ""
+    @State private var secondConfidence = ""
+    
+    @State private var showImagePicker: Bool = false
+    @State private var img: Image? = nil
+    @State private var placeholderIsShown = true
+    
     var body: some View {
         VStack {
             VStack {
@@ -21,10 +32,20 @@ struct ContentView: View {
                     RoundedRectangle(cornerRadius: 12)
                         .stroke(Color(UIColor.systemGreen), lineWidth: 4)
                         .frame(width: 350, height: 250)
-                    Image("dogPlaceholder")
-                        .scaleEffect(0.7)
-                        .cornerRadius(20)
-                        .shadow(color: .white, radius: 3)
+                    
+                    img?.resizable()
+                        .scaledToFit()
+                        .padding()
+                    
+                    if placeholderIsShown {
+                        Image("dogPlaceholder")
+                            .scaleEffect(0.7)
+                            .cornerRadius(20)
+                            .shadow(color: .white, radius: 3)
+                    } else {
+                        Image("dogPlaceholder")
+                            .frame(width: 500, height: 200).hidden()
+                    }
                 }
             }
             
@@ -35,18 +56,35 @@ struct ContentView: View {
                 RoundedRectangle(cornerRadius: 12)
                     .stroke(Color(UIColor.systemOrange), lineWidth: 2)
                     .frame(width: 350, height: 60)
+                    .overlay(Text(" " + self.topPrediction + self.topConfidence)
+                        .padding(5)
+                        .minimumScaleFactor(0.5)
+                        .lineLimit(1)
+                        .font(.title)
+                        .padding(.bottom))
                     .padding(.bottom)
                 
                 Text("Second Prediction & Confidence").font(.custom("Charter Italic", size: 22)).foregroundColor(. white)
                 RoundedRectangle(cornerRadius: 12)
                     .stroke(Color(UIColor.systemOrange), lineWidth: 2)
                     .frame(width: 350, height: 60)
-            }.padding()
+                    .overlay(Text(" " + self.secondPrediction + self.secondConfidence)
+                        .padding(5)
+                        .minimumScaleFactor(0.5)
+                        .lineLimit(1)
+                        .font(.title))
+            }.foregroundColor(.white)
+                .padding()
             
             VStack {
                 HStack(spacing: 30) {
                     Button {
-                        print("clickButton")
+                        self.topPrediction = ""
+                        self.secondPrediction = ""
+                        self.topConfidence = ""
+                        self.secondConfidence = ""
+                        self.showImagePicker = true
+                        self.placeholderIsShown = false
                     } label: {
                         VStack {
                             Image(systemName: "photo.on.rectangle")
@@ -59,7 +97,10 @@ struct ContentView: View {
                         .cornerRadius(25)
                     
                     Button {
-                        print("clickButton")
+                        self.topPrediction = UserDefaults.standard.string(forKey: "topPrediction") ?? "No Prediction Available"
+                        self.secondPrediction = UserDefaults.standard.string(forKey: "secondPrediction") ?? "No Prediction Available"
+                        self.topConfidence = UserDefaults.standard.string(forKey: "topConfidence") ?? "No Confidence Available"
+                        self.secondConfidence = UserDefaults.standard.string(forKey: "secondConfidence") ?? "No Confidence Available"
                     } label: {
                         VStack {
                             Image(systemName: "questionmark.square.fill")
@@ -70,11 +111,11 @@ struct ContentView: View {
                         .foregroundColor(.black)
                         .background(Color(UIColor.systemOrange))
                         .cornerRadius(25)
-
-                    
                 }
             }
-            
+            .sheet(isPresented: self.$showImagePicker) {
+                ImagePicker(isShow: self.$showImagePicker, image: self.$img)
+            }
             
         }.background(Image("background")).edgesIgnoringSafeArea(.all)
         .padding()

@@ -14,6 +14,9 @@
 		C72886F82A109A1E006E2581 /* Dog_Bread_IDTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72886F72A109A1E006E2581 /* Dog_Bread_IDTests.swift */; };
 		C72887022A109A1E006E2581 /* Dog_Bread_IDUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72887012A109A1E006E2581 /* Dog_Bread_IDUITests.swift */; };
 		C72887042A109A1E006E2581 /* Dog_Bread_IDUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72887032A109A1E006E2581 /* Dog_Bread_IDUITestsLaunchTests.swift */; };
+		C72887112A192134006E2581 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72887102A192134006E2581 /* ImagePicker.swift */; };
+		C72887132A1927AA006E2581 /* DetectImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72887122A1927AA006E2581 /* DetectImage.swift */; };
+		C72887152A1928D2006E2581 /* All_AKC_Breeds_Reworked_1500.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = C72887142A1928D2006E2581 /* All_AKC_Breeds_Reworked_1500.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +47,9 @@
 		C72886FD2A109A1E006E2581 /* Dog_Bread_IDUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Dog_Bread_IDUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C72887012A109A1E006E2581 /* Dog_Bread_IDUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dog_Bread_IDUITests.swift; sourceTree = "<group>"; };
 		C72887032A109A1E006E2581 /* Dog_Bread_IDUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dog_Bread_IDUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		C72887102A192134006E2581 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		C72887122A1927AA006E2581 /* DetectImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectImage.swift; sourceTree = "<group>"; };
+		C72887142A1928D2006E2581 /* All_AKC_Breeds_Reworked_1500.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = All_AKC_Breeds_Reworked_1500.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +102,9 @@
 			children = (
 				C72886E62A109A1D006E2581 /* Dog_Bread_IDApp.swift */,
 				C72886E82A109A1D006E2581 /* ContentView.swift */,
+				C72887102A192134006E2581 /* ImagePicker.swift */,
+				C72887122A1927AA006E2581 /* DetectImage.swift */,
+				C72887142A1928D2006E2581 /* All_AKC_Breeds_Reworked_1500.mlmodel */,
 				C72886EA2A109A1E006E2581 /* Assets.xcassets */,
 				C72886EC2A109A1E006E2581 /* Preview Content */,
 			);
@@ -257,7 +266,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C72887132A1927AA006E2581 /* DetectImage.swift in Sources */,
+				C72887112A192134006E2581 /* ImagePicker.swift in Sources */,
 				C72886E92A109A1D006E2581 /* ContentView.swift in Sources */,
+				C72887152A1928D2006E2581 /* All_AKC_Breeds_Reworked_1500.mlmodel in Sources */,
 				C72886E72A109A1D006E2581 /* Dog_Bread_IDApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
